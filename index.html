@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>portofolio</title>
+  </head>
+  <body>
+    <table border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <tr>
+          <td colspan="2">Mustofa kamal</td>
+          <td><a href="/">home</a></td>
+          <td><a href="/">about</a></td>
+          <td><a href="/">skil</a></td>
+          <td><a href="/">projek</a></td>
+          <td><a href="/">contact me</a></td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td colspan="2"><img id="image" src="1.jpg" width="280px" height="400" class="cr" /></td>
+          <td colspan="6" rowspan="3" id="l">
+            <h1>Mustofa kamal</h1>
+            <hr />
+            <p>Nama saya Mustofa kamal,saya adalah seorang mahasiswa dari universitas Raharja,saat ini saya sedang mempelajari tentang pengembangan Web, ,saya sangat ingin menjadi seorang web Developer,</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" id="waktu">
+            <span id="jam">00</span>
+            <span>:</span>
+            <span id="mnt">00</span>
+            <span>:</span>
+            <span id="dtk">00</span>
+            <span id="sesion">AM</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button onclick="suka()" type="button">like</button>
+            <div id="sukaa"></div>
+          </td>
+          <td>
+            <button onclick="tidaksuka()" type="button">dislike</button>
+            <div id="gaa"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      changeimg();
+
+      function changeimg() {
+        let images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+        let i = 0;
+
+        setInterval(function () {
+          if (i === images.length) {
+            i = 0;
+          }
+          document.getElementById("image").src = images[i];
+          i++;
+        }, 1500);
+      }
+
+      function waktuu() {
+        let time = new Date();
+        let jm = time.getHours();
+        let menit = time.getMinutes();
+        let detik = time.getSeconds();
+        let session = "AM";
+
+        if (jm == 0) {
+          h = 12;
+        }
+
+        if (jm > 12) {
+          jm = jm - 12;
+          session = "PM";
+        }
+
+        if (jm < 10) {
+          jm = "0" + jm;
+        }
+
+        if (menit < 10) {
+          menit = "0" + menit;
+        }
+
+        if (detik < 10) {
+          detik = "0" + detik;
+        }
+
+        document.getElementById("sesion").innerHTML = session;
+        document.getElementById("jam").innerHTML = jm;
+        document.getElementById("mnt").innerHTML = menit;
+        document.getElementById("dtk").innerHTML = detik;
+      }
+      setInterval(waktuu, 100);
+
+      function suka() {
+        if (localStorage.click1) {
+          localStorage.click1 = Number(localStorage.click1) + 1;
+        } else {
+          localStorage.click1 = 1;
+        }
+
+        document.getElementById("sukaa").innerHTML = localStorage.click1;
+      }
+
+      function tidaksuka() {
+        if (localStorage.click2) {
+          localStorage.click2 = Number(localStorage.click2) + 1;
+        } else {
+          localStorage.click2 = 1;
+        }
+
+        document.getElementById("gaa").innerHTML = localStorage.click2;
+      }
+    </script>
+  </body>
+</html>
